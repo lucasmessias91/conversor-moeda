@@ -14,44 +14,51 @@
   </head>
   <body>
     <div class="logo">
-      <img id="logo"
-        src="./assets/img/logo.gif"
-        alt="logo-conversor-moedas"
-      />
+      <img id="logo" src="./assets/img/logo.gif" alt="logo-conversor-moedas" />
     </div>
     <main>
       <label>
         Converter <b>de</b>
-        <select>
-          <option>R$ Real Brasileiro</option>
+        <select class="select-moeda-1">
+            <option value="real">R$ Real Brasileiro</option>
+            <option value="dolar">US$ Dólar Americano</option>
+            <option value="euro">€ Euro</option>
+            <option value="libra">£ Libra</option>
         </select>
       </label>
       <label>
         Converter <b>para</b>
-        <select>
-          <option>US$ Dólar Americano</option>
+        <select class="select-moeda-2">
+          <option value="dolar">US$ Dólar Americano</option>
+          <option value="euro">€ Euro</option>
+          <option value="libra">£ Libra</option>
+          <option value="real">R$ Real Brasileiro</option>
         </select>
       </label>
       <label>
         Valor
-        <input type="text" placeholder="R$ 0,00"  />
+        <input class="valor" type="text" placeholder="R$ 0,00" />
       </label>
-      <button>Converter</button>
+      <button onclick="converter()" class="btn-converter">Converter</button>
       <section>
         <div class="currency-box">
-          <img
-            src="./assets/img/brasil.png"
-            alt="logo-moeda-converter"
-            readonly
-          />
-          <p class="currency">Real</p>
-          <p class="currency-value">R$ 0,00</p>
+          <img class="img-moeda-1" src="./assets/img/real.png" alt="logo-moeda-converter" />
+          <p class="currency name-moeda-1">Real</p>
+          <p class="currency-value-convert convertido">R$ 0,00</p>
         </div>
-        <img class="flecha" src="./assets/img/flecha.png" alt="seta-conversao" />
+        <img
+          class="flecha"
+          src="./assets/img/flecha.png"
+          alt="seta-conversao"
+        />
         <div class="currency-box">
-          <img src="./assets/img/eua.png" alt="logo-moeda-convertida" />
-          <p class="currency">Dolar</p>
-          <p class="currency-value">R$ 0,00</p>
+          <img
+            class="img-moeda-2"
+            src="./assets/img/dolar.png"
+            alt="logo-moeda-convertida"
+          />
+          <p class="currency name-moeda-2">Dolar</p>
+          <p class="currency-value resultado">$ 0,00</p>
         </div>
       </section>
     </main>
