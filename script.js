@@ -7,12 +7,11 @@ const eurohoje = 6.1959;
 const librahoje = 7.1559;
 const realhoje = 1.0;
 
-
 function converter() {
   const valor = document.querySelector(".valor").value;
   const selectMoeda2 = document.querySelector(".select-moeda-2").value;
   const selectMoeda1 = document.querySelector(".select-moeda-1").value;
-  
+
   if (selectMoeda1 == "real" && selectMoeda2 == "dolar") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
       "en-US",
@@ -45,7 +44,6 @@ function converter() {
         currency: "BRL",
       }
     ).format(valor);
-
   }
   if (selectMoeda1 == "real" && selectMoeda2 == "libra") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
@@ -271,8 +269,6 @@ function converter() {
       }
     ).format(valor);
   }
-
-  
 }
 
 function trocarMoeda() {
@@ -283,42 +279,34 @@ function trocarMoeda() {
   const imgMoeda1 = document.querySelector(".img-moeda-1");
   const imgMoeda2 = document.querySelector(".img-moeda-2");
   if (selectMoeda1.value == "dolar") {
-    
     imgMoeda1.src = "./assets/img/dolar.png";
     nameMoeda1.innerHTML = "Dólar";
   }
   if (selectMoeda1.value == "euro") {
-    
     imgMoeda1.src = "./assets/img/euro.png";
     nameMoeda1.innerHTML = "Euro";
   }
   if (selectMoeda1.value == "libra") {
-    
     imgMoeda1.src = "./assets/img/libra.png";
     nameMoeda1.innerHTML = "Libra";
   }
   if (selectMoeda1.value == "real") {
-    
     imgMoeda1.src = "./assets/img/real.png";
     nameMoeda1.innerHTML = "Real";
   }
   if (selectMoeda2.value == "dolar") {
-    
     imgMoeda2.src = "./assets/img/dolar.png";
     nameMoeda2.innerHTML = "Dólar";
   }
   if (selectMoeda2.value == "euro") {
-    
     imgMoeda2.src = "./assets/img/euro.png";
     nameMoeda2.innerHTML = "Euro";
   }
   if (selectMoeda2.value == "libra") {
-    
     imgMoeda2.src = "./assets/img/libra.png";
     nameMoeda2.innerHTML = "Libra";
   }
   if (selectMoeda2.value == "real") {
-    
     imgMoeda2.src = "./assets/img/real.png";
     nameMoeda2.innerHTML = "Real";
   }
@@ -330,4 +318,4 @@ selectMoeda2.addEventListener("change", trocarMoeda);
 selectMoeda1.addEventListener("change", trocarMoeda);
 valor.addEventListener("keyup", converter);
 
-btn.addEventListener("click", converter)
+btn.addEventListener("click", converter);
