@@ -13,7 +13,12 @@
     <title>Conversor de Moedas</title>
   </head>
   <body>
-    <img src="./assets/img/logo.gif" alt="logo-conversor-moedas" />
+    <div class="logo">
+      <img id="logo"
+        src="./assets/img/logo.gif"
+        alt="logo-conversor-moedas"
+      />
+    </div>
     <main>
       <label>
         Converter <b>de</b>
@@ -28,21 +33,25 @@
         </select>
       </label>
       <label>
-        Valor a ser convertido
-        <input type="text" placeholder="R$ 0,00" readonly />
+        Valor
+        <input type="text" placeholder="R$ 0,00"  />
       </label>
       <button>Converter</button>
       <section>
-        <div>
-          <img src="./assets/img/brasil.png" alt="logo-moeda-converter" readonly />
-          <p>Real</p>
-          <p>R$ 0,00</p>
+        <div class="currency-box">
+          <img
+            src="./assets/img/brasil.png"
+            alt="logo-moeda-converter"
+            readonly
+          />
+          <p class="currency">Real</p>
+          <p class="currency-value">R$ 0,00</p>
         </div>
-        <img src="./assets/img/flecha.png" alt="seta-conversao" />
-        <div>
+        <img class="flecha" src="./assets/img/flecha.png" alt="seta-conversao" />
+        <div class="currency-box">
           <img src="./assets/img/eua.png" alt="logo-moeda-convertida" />
-          <p>Dolar</p>
-          <p>R$ 0,00</p>
+          <p class="currency">Dolar</p>
+          <p class="currency-value">R$ 0,00</p>
         </div>
       </section>
     </main>
