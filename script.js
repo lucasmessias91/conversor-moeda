@@ -18,7 +18,6 @@ async function converter() {
   const btchoje = JSON.parse(data.BTCBRL.high)
   const realhoje = 1.0;
 
-  console.log(dolarhoje, eurohoje, btchoje, realhoje);
 
   if (selectMoeda1 == "real" && selectMoeda2 == "dolar") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
