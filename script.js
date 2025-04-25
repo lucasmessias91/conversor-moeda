@@ -2,15 +2,23 @@ const btn = document.querySelector(".btn-converter");
 const selectMoeda1 = document.querySelector(".select-moeda-1");
 const selectMoeda2 = document.querySelector(".select-moeda-2");
 const valor = document.querySelector(".valor");
-const dolarhoje = 5.8559015;
-const eurohoje = 6.1959;
-const librahoje = 7.1559;
-const realhoje = 1.0;
 
-function converter() {
+
+async function converter() {
   const valor = document.querySelector(".valor").value;
   const selectMoeda2 = document.querySelector(".select-moeda-2").value;
   const selectMoeda1 = document.querySelector(".select-moeda-1").value;
+
+  const data = await fetch(
+    "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
+  ).then(response => response.json())
+
+  const dolarhoje = JSON.parse(data.USDBRL.high)
+  const eurohoje = JSON.parse(data.EURBRL.high)
+  const btchoje = JSON.parse(data.BTCBRL.high)
+  const realhoje = 1.0;
+
+  console.log(dolarhoje, eurohoje, btchoje, realhoje);
 
   if (selectMoeda1 == "real" && selectMoeda2 == "dolar") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
@@ -45,14 +53,14 @@ function converter() {
       }
     ).format(valor);
   }
-  if (selectMoeda1 == "real" && selectMoeda2 == "libra") {
+  if (selectMoeda1 == "real" && selectMoeda2 == "btc") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
-      "en-GB",
+      "de-DE",
       {
         style: "currency",
-        currency: "GBP",
+        currency: "BTC",
       }
-    ).format(valor / librahoje);
+    ).format(valor / btchoje);
     document.querySelector(".convertido").innerHTML = new Intl.NumberFormat(
       "pt-BR",
       {
@@ -109,14 +117,14 @@ function converter() {
       }
     ).format(valor);
   }
-  if (selectMoeda1 == "dolar" && selectMoeda2 == "libra") {
+  if (selectMoeda1 == "dolar" && selectMoeda2 == "btc") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
-      "en-GB",
+      "de-DE",
       {
         style: "currency",
-        currency: "GBP",
+        currency: "BTC",
       }
-    ).format((valor * dolarhoje) / librahoje);
+    ).format((valor * dolarhoje) / btchoje);
     document.querySelector(".convertido").innerHTML = new Intl.NumberFormat(
       "en-US",
       {
@@ -173,14 +181,14 @@ function converter() {
       }
     ).format(valor);
   }
-  if (selectMoeda1 == "euro" && selectMoeda2 == "libra") {
+  if (selectMoeda1 == "euro" && selectMoeda2 == "btc") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
-      "en-GB",
+      "de-DE",
       {
         style: "currency",
-        currency: "GBP",
+        currency: "BTC",
       }
-    ).format((valor * eurohoje) / librahoje);
+    ).format((valor * eurohoje) / btchoje);
     document.querySelector(".convertido").innerHTML = new Intl.NumberFormat(
       "de-DE",
       {
@@ -205,14 +213,14 @@ function converter() {
       }
     ).format(valor);
   }
-  if (selectMoeda1 == "libra" && selectMoeda2 == "real") {
+  if (selectMoeda1 == "btc" && selectMoeda2 == "real") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
       "pt-BR",
       {
         style: "currency",
         currency: "BRL",
       }
-    ).format(valor * librahoje);
+    ).format(valor * btchoje);
     document.querySelector(".convertido").innerHTML = new Intl.NumberFormat(
       "en-GB",
       {
@@ -221,14 +229,14 @@ function converter() {
       }
     ).format(valor);
   }
-  if (selectMoeda1 == "libra" && selectMoeda2 == "dolar") {
+  if (selectMoeda1 == "btc" && selectMoeda2 == "dolar") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
       "en-US",
       {
         style: "currency",
         currency: "USD",
       }
-    ).format((valor * librahoje) / dolarhoje);
+    ).format((valor * btchoje) / dolarhoje);
     document.querySelector(".convertido").innerHTML = new Intl.NumberFormat(
       "en-GB",
       {
@@ -237,14 +245,14 @@ function converter() {
       }
     ).format(valor);
   }
-  if (selectMoeda1 == "libra" && selectMoeda2 == "euro") {
+  if (selectMoeda1 == "btc" && selectMoeda2 == "euro") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
       "de-DE",
       {
         style: "currency",
         currency: "EUR",
       }
-    ).format((valor * librahoje) / eurohoje);
+    ).format((valor * btchoje) / eurohoje);
     document.querySelector(".convertido").innerHTML = new Intl.NumberFormat(
       "en-GB",
       {
@@ -253,19 +261,19 @@ function converter() {
       }
     ).format(valor);
   }
-  if (selectMoeda1 == "libra" && selectMoeda2 == "libra") {
+  if (selectMoeda1 == "btc" && selectMoeda2 == "btc") {
     document.querySelector(".resultado").innerHTML = new Intl.NumberFormat(
-      "en-GB",
+      "de-DE",
       {
         style: "currency",
-        currency: "GBP",
+        currency: "BTC",
       }
     ).format(valor);
     document.querySelector(".convertido").innerHTML = new Intl.NumberFormat(
-      "en-GB",
+      "de-DE",
       {
         style: "currency",
-        currency: "GBP",
+        currency: "BTC",
       }
     ).format(valor);
   }
@@ -286,9 +294,9 @@ function trocarMoeda() {
     imgMoeda1.src = "./assets/img/euro.png";
     nameMoeda1.innerHTML = "Euro";
   }
-  if (selectMoeda1.value == "libra") {
-    imgMoeda1.src = "./assets/img/libra.png";
-    nameMoeda1.innerHTML = "Libra";
+  if (selectMoeda1.value == "btc") {
+    imgMoeda1.src = "./assets/img/bitcoin.png";
+    nameMoeda1.innerHTML = "Bitcoin";
   }
   if (selectMoeda1.value == "real") {
     imgMoeda1.src = "./assets/img/real.png";
@@ -302,9 +310,9 @@ function trocarMoeda() {
     imgMoeda2.src = "./assets/img/euro.png";
     nameMoeda2.innerHTML = "Euro";
   }
-  if (selectMoeda2.value == "libra") {
-    imgMoeda2.src = "./assets/img/libra.png";
-    nameMoeda2.innerHTML = "Libra";
+  if (selectMoeda2.value == "btc") {
+    imgMoeda2.src = "./assets/img/bitcoin.png";
+    nameMoeda2.innerHTML = "Bitcoin";
   }
   if (selectMoeda2.value == "real") {
     imgMoeda2.src = "./assets/img/real.png";
